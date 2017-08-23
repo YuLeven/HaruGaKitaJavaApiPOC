@@ -20,7 +20,7 @@ public class AuthToken {
         try {
             return JWT.decode(token);
         } catch (JWTDecodeException e) {
-            Logger.error(e);
+            Logger.error(e.getMessage());
             return null;
         }
     }
@@ -32,7 +32,7 @@ public class AuthToken {
 
             return verifier.verify(token);
         } catch (Exception e) {
-            Logger.error(e);
+            Logger.error(e.getMessage());
             return null;
         }
     }
