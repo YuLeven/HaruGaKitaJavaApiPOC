@@ -1,0 +1,17 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+#Login and registration
+POST    /login                          controllers.SessionController.getToken()
+
+# Kanjis
+GET     /kanjis/:kanji                   controllers.KanjiController.getKanjiByKanji(kanji)
+GET     /kanjis                          controllers.KanjiController.getAllKanji()
+
+# Users
+GET     /users/current/stats             controllers.UserController.getUserStats()
+
+#Packages
+GET     /packages/:id                    controllers.PrepaidPackageController.getPackage(id)
+GET     /packages                        controllers.PrepaidPackageController.getAllPackages()
