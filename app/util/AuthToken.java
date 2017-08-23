@@ -13,7 +13,7 @@ import com.auth0.jwt.interfaces.DecodedJWT;
  */
 public class AuthToken {
 
-    private static final String RAILS_SECRET_KEY = System.getenv(RAILS_SECRET_KEY);
+    private static final String RAILS_SECRET_KEY = System.getenv("HARU_RAILS_SECRET_KEY");
 
     public static JWT decodeToken(String token) {
         try {

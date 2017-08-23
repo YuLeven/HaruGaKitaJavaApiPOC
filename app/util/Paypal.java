@@ -12,9 +12,9 @@ import org.apache.http.client.utils.URIBuilder;
  */
 public class Paypal {
 
-    private final String HARU_PAYMENT_EMAIL = System.getenv("HARU_PAYPAL_EMAIL");
-    private final String HARU_PAYMENT_RETURN_URL = System.getenv("HARU_PAYMENT_RETURN_URL");
-    private final String HARU_PAYPAL_NOTIFICATION_HOOK = System.getenv("HARU_PAYPAL_NOTIFICATION_HOOK");
+    private static final String HARU_PAYMENT_EMAIL = System.getenv("HARU_PAYPAL_EMAIL");
+    private static final String HARU_PAYMENT_RETURN_URL = System.getenv("HARU_PAYMENT_RETURN_URL");
+    private static final String HARU_PAYPAL_NOTIFICATION_HOOK = System.getenv("HARU_PAYPAL_NOTIFICATION_HOOK");
 
     public static String createPaypalURL(User user, PrepaidPackage prepaidPackage) {
 
