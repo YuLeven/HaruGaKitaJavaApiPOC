@@ -30,7 +30,7 @@ public enum APIError {
             case UNAUTHORIZED:
                 return "The informed credentials are invalid.";
             default:
-                return "An error occurred but a message could not be retrieve";
+                return "An error occurred but a message could not be retrieved";
         }
     }
 }

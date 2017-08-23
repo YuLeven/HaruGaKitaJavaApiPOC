@@ -5,6 +5,7 @@ import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTDecodeException;
 import com.auth0.jwt.interfaces.DecodedJWT;
+import play.Logger;
 
 /* Copyright 2017, Haru ga Kita! - All Rights Reserved
  * Unauthorized copying of this file, via any medium is strictly prohibited
@@ -19,7 +20,7 @@ public class AuthToken {
         try {
             return JWT.decode(token);
         } catch (JWTDecodeException e) {
-            e.printStackTrace();
+            Logger.error(e);
             return null;
         }
     }
@@ -27,9 +28,11 @@ public class AuthToken {
     public static DecodedJWT verifyToken(String token) {
         try {
             JWTVerifier verifier = JWT.require(Algorithm.HMAC256(RAILS_SECRET_KEY))
-                    .build();
+                                      .build();
+
             return verifier.verify(token);
         } catch (Exception e) {
+            Logger.error(e);
             return null;
         }
     }
