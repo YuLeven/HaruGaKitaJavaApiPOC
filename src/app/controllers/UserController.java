@@ -4,6 +4,7 @@ import com.google.inject.Inject;
 import dao.UserDAO;
 import filters.TokenSecured;
 import models.User;
+import models.Clazz;
 import play.db.jpa.Transactional;
 import play.mvc.Controller;
 import play.mvc.Result;
@@ -53,7 +54,7 @@ public class UserController extends Controller {
             public String name = user.getName();
             public String email = request().username();
             public Integer hoursBalance = user.getUserHour().getAmount();
-            public List<models.Class> classes = user.getClasses();
+            public List<Clazz> classes = user.getClasses();
         };
 
         //Returns to the caller
