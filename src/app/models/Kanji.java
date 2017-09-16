@@ -13,14 +13,6 @@ import java.io.Serializable;
  */
 @Entity
 @Table(name = "kanjis")
-@NamedQueries({
-    @NamedQuery(
-        name= KanjiDAO.FIND_BY_KANJI, query="FROM Kanji k WHERE k.kanji = :kanji"
-    ),
-    @NamedQuery(
-        name=KanjiDAO.FIND_ALL, query="FROM Kanji k"
-    )
-})
 public class Kanji implements Serializable {
 
     @Id

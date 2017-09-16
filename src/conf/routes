@@ -6,8 +6,8 @@
 POST    /login                          controllers.SessionController.getToken()
 
 # Kanjis
-GET     /kanjis/:kanji                   controllers.KanjiController.getKanjiByKanji(kanji)
-GET     /kanjis                          controllers.KanjiController.getAllKanji()
+GET     /kanjis/:id                      controllers.KanjiController.get(id: Long)
+GET     /kanjis                          controllers.KanjiController.getAll(kanji: Option[String])
 
 # Users
 GET     /users/current/stats             controllers.UserController.getUserStats()

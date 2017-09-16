@@ -7,6 +7,7 @@ import play.db.jpa.Transactional;
 import play.mvc.Controller;
 import play.mvc.Result;
 import play.mvc.Security;
+import scala.Option;
 import util.APIError;
 import util.ErrorHandling;
 
@@ -30,31 +31,41 @@ public class KanjiController extends Controller {
     }
 
     @Transactional(readOnly = true)
-    public Result getAllKanji() {
+    public Result getAll() {
         return ok(
             toJson(kanjiDAO.findAll())
         );
     }
 
     @Transactional(readOnly = true)
-    public Result getKanjiByKanji(String kanjiString) {
+    public Result getAll(Option<String> kanji) {
 
-        //Local variables used throught the method
-        Kanji kanji;
+        //TODO: Find a way to do this using method overload?
+        //Returns a complete list if the parameter isn't present
+        if (kanji.isEmpty()) return getAll();
+
+        return ok(
+            toJson(
+                kanjiDAO.findByKanji(kanji.get())
+            )
+        );
+    }
+
+    @Transactional(readOnly = true)
+    public Result get(Long ID) {
 
         //Loads the kanji, returning early if not found
         try {
-            kanji = kanjiDAO.findOneByKanji(kanjiString);
+            //Returns to the caller
+            return ok(
+                toJson(kanjiDAO.find(ID))
+            );
         } catch (NoResultException ex) {
             return notFound(
                 toJson(ErrorHandling.makeErrorMessage(APIError.KANJI_NOT_FOUND))
             );
         }
 
-        //Returns to the caller
-        return ok(
-            toJson(kanji)
-        );
     }
 
 }

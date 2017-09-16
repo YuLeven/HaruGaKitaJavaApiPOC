@@ -14,12 +14,6 @@ import java.util.Date;
  */
 @Entity
 @Table(name = "pacotes")
-@NamedQueries(
-        @NamedQuery(
-                name = PrepaidPackageDAO.FIND_ALL_PACKAGES,
-                query = "FROM PrepaidPackage p"
-        )
-)
 public class PrepaidPackage {
 
     @Id

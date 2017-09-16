@@ -70,7 +70,7 @@ public class User implements Serializable {
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
     @JsonManagedReference
     @OrderBy("start")
-    private List<Class> classes;
+    private List<Clazz> classes;
 
     public User() {
     }
@@ -187,11 +187,11 @@ public class User implements Serializable {
         this.userHour = userHour;
     }
 
-    public List<Class> getClasses() {
+    public List<Clazz> getClasses() {
         return classes;
     }
 
-    public void setClasses(List<Class> classes) {
+    public void setClasses(List<Clazz> classes) {
         this.classes = classes;
     }
 }
